@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Bibil TV</title>
+<meta name="description" content="Bibil TV: um aplicativo criado do zero por um jovem desenvolvedor determinado. Baixe o app e faça parte dessa história.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;700;800&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0b0b0b; --surface:#141414; --line:#262626; --text:#ededed; --muted:#a1a1a1; --accent:#e11d2e; --accent-hi:#ff3b4a;
+  color-scheme: dark;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+html{scroll-behavior:smooth;scroll-padding-top:calc(72px + env(safe-area-inset-top,0px))}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--text);font-family:"Source Sans 3",system-ui,sans-serif;font-size:18px;line-height:1.7}
+h1,h2,.brand{font-family:Outfit,"Arial Black",sans-serif;font-weight:800;line-height:1.05;margin:0}
+a{color:inherit;text-decoration:none}
+.wrap{width:min(1040px,100% - 40px);margin-inline:auto}
+nav{position:fixed;top:0;left:0;right:0;z-index:10;padding-top:env(safe-area-inset-top,0px);transition:background .3s,backdrop-filter .3s,border-color .3s;border-bottom:1px solid transparent}
+nav.scrolled{background:rgba(11,11,11,.72);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-color:var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:68px}
+.brand{font-size:22px;letter-spacing:.02em;display:flex;align-items:center;gap:10px}
+.brand svg{width:30px;height:30px}
+.links{display:flex;gap:26px;font-size:16px;color:var(--muted)}
+.links a{transition:color .2s}.links a:hover{color:var(--text)}
+@media(max-width:620px){.links a:not(.keep){display:none}}
+.hero{min-height:100svh;display:flex;align-items:center;padding:120px 0 80px;position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;width:560px;height:560px;right:-180px;top:50%;translate:0 -50%;border-radius:50%;border:1px solid var(--line);box-shadow:0 0 0 70px rgba(225,29,46,.03),0 0 0 140px rgba(225,29,46,.02)}
+.eyebrow{font-weight:600;font-size:14px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent-hi);margin:0 0 22px}
+.hero h1{font-size:clamp(44px,8vw,96px);max-width:12ch}
+.hero h1 span{color:var(--accent)}
+.lead{max-width:34em;color:var(--muted);font-size:clamp(18px,2.2vw,21px);margin:28px 0 40px}
+.btns{display:flex;flex-wrap:wrap;gap:14px}
+.btn{display:inline-flex;align-items:center;min-height:48px;padding:0 28px;border-radius:999px;font-weight:600;border:1px solid var(--line);transition:transform .2s,background .2s,border-color .2s,color .2s}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+.btn.primary:hover{background:var(--accent-hi);border-color:var(--accent-hi);transform:translateY(-2px)}
+.btn.ghost:hover{border-color:var(--accent);color:var(--accent-hi);transform:translateY(-2px)}
+section{padding:112px 0}
+.tag{font-size:14px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent-hi);font-weight:600;margin:0 0 16px}
+h2{font-size:clamp(32px,5vw,56px);margin-bottom:48px;max-width:16ch}
+.story{display:grid;gap:56px;grid-template-columns:1fr}
+@media(min-width:900px){.story{grid-template-columns:5fr 7fr;gap:80px}}
+.story p{margin:0 0 24px;color:#cfcfcf}
+.quote{border:1px solid var(--line);background:var(--surface);border-radius:20px;padding:36px;position:relative}
+.quote::before{content:"";position:absolute;left:36px;top:0;width:56px;height:3px;background:var(--accent);translate:0 -50%}
+.quote p{font-family:Outfit,sans-serif;font-weight:700;font-size:clamp(24px,3vw,32px);line-height:1.25;color:var(--text);margin:0}
+.cta{background:var(--surface);border-block:1px solid var(--line);text-align:center}
+.cta h2{margin-inline:auto}
+.cta p{color:var(--muted);max-width:30em;margin:0 auto 36px}
+.cta .btns{justify-content:center}
+footer{padding:56px 0 64px;color:var(--muted);font-size:16px}
+footer .wrap{display:flex;flex-wrap:wrap;gap:20px;justify-content:space-between;align-items:center}
+footer nav,footer .flinks{position:static;display:flex;gap:24px}
+footer a:hover{color:var(--text)}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s ease}
+.reveal.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal{opacity:1;transform:none;transition:none}}
+a:focus-visible{outline:2px solid var(--accent-hi);outline-offset:3px}
+</style>
+</head>
+<body>
+<nav id="nav">
+  <div class="wrap">
+    <a class="brand" href="#inicio" aria-label="Bibil TV, início">
+      <svg viewBox="0 0 140 150" aria-hidden="true"><path d="M50 30 L30 6 M90 30 L110 6" stroke="#e11d2e" stroke-width="9" stroke-linecap="round" fill="none"/><rect x="8" y="34" width="124" height="92" rx="22" fill="none" stroke="#e11d2e" stroke-width="11"/><polygon points="58,62 58,98 90,80" fill="#e11d2e" stroke="#e11d2e" stroke-width="6" stroke-linejoin="round"/></svg>
+      BIBIL TV
+    </a>
+    <div class="links">
+      <a href="#historia">História</a>
+      <a href="videoview.html">Vídeos</a>
+      <a href="https://www.jogadorcaro.online/" target="_blank" rel="noopener">Blog</a>
+      <a class="keep" href="#baixar">Baixar</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+  <header class="hero" id="inicio">
+    <div class="wrap">
+      <p class="eyebrow">Aplicativo Bibil TV</p>
+      <h1>Bem-vindo ao universo <span>Bibil TV</span></h1>
+      <p class="lead">Um aplicativo criado do zero por um jovem desenvolvedor que decidiu dedicar-se por inteiro a esse projeto.</p>
+      <div class="btns">
+        <a class="btn primary" href="https://www.jogadorcaro.online/" target="_blank" rel="noopener">Baixar o app</a>
+        <a class="btn ghost" href="videoview.html">Assistir vídeos</a>
+        <a class="btn ghost" href="#historia">Conhecer a história</a>
+      </div>
+    </div>
+  </header>
+
+  <section id="historia">
+    <div class="wrap">
+      <p class="tag reveal">Por trás do código</p>
+      <h2 class="reveal">A história por trás do app</h2>
+      <div class="story">
+        <div class="quote reveal">
+          <p>“Eu não procuro doações. O que eu busco é o seu reconhecimento.”</p>
+        </div>
+        <div class="reveal">
+          <p>Atrás das linhas de código e das telas do aplicativo, existe um jovem determinado a mudar a realidade da sua família. Há algum tempo, deixei para trás o mundo de desenvolvimento de mods de jogos para me dedicar 100% à criação e ao crescimento da Bibil TV.</p>
+          <p>Hoje, vivo uma batalha diária: minha avó sofreu um AVC e está doente. Toda a nossa renda vai para os cuidados dela e insumos básicos, como fraldas. Às vezes faltam recursos até para manter a internet ligada para eu continuar programando, mas a vontade de vencer é maior do que qualquer barreira.</p>
+          <p>Cada download, cada visualização no blog e cada minuto assistido no canal é o combustível que preciso para continuar criando e dar uma vida melhor para quem eu amo.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta" id="baixar">
+    <div class="wrap">
+      <h2 class="reveal">Faça parte dessa história</h2>
+      <p class="reveal">Inscreva-se, baixe o app e acompanhe o crescimento da Bibil TV. Um forte abraço!</p>
+      <div class="btns reveal">
+        <a class="btn primary" href="https://www.jogadorcaro.online/" target="_blank" rel="noopener">Baixar o app</a>
+        <a class="btn ghost" href="https://www.jogadorcaro.online/" target="_blank" rel="noopener">Visitar o blog</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Bibil TV, criado por Gabriel Amorim</span>
+    <div class="flinks">
+      <a href="https://github.com/BIBILModss" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://www.linkedin.com/in/gabriel-amorim-4b6b5b445/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://www.jogadorcaro.online/" target="_blank" rel="noopener">Blog</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var nav=document.getElementById('nav');
+  function onScroll(){nav.classList.toggle('scrolled',window.scrollY>20)}
+  window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+  var els=document.querySelectorAll('.reveal');
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.15});
+    els.forEach(function(el){io.observe(el)});
+  }else{els.forEach(function(el){el.classList.add('in')})}
+})();
+</script>
+</body>
+</html>
